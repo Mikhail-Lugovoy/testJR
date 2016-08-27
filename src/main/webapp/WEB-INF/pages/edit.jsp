@@ -3,25 +3,32 @@
 <%--<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>--%>
 <html>
 <head>
-    <title>Edit Department</title>
+    <title>Edit User</title>
 </head>
 <body>
-<form:form method="post" action="/depSaveOrUpdate">
+<form:form method="post" action="/userSaveOrUpdate">
     <table>
         <tr>
-            <td height="50" width="200">New Department Name:</td>
-            <td height="30"><input type="text" name="name" value="${department.name}"/></td>
+            <td height="50" width="200">New User Name:</td>
+            <td height="30"><input type="text" name="name" value="${user.name}"/></td>
+        </tr>
+        <tr>
+            <td height="50" width="200">New User Age:</td>
+            <td height="30"><input type="text" name="age" value="${user.age}"/></td>
+        </tr>
+        <tr>
+            <td height="50" width="200">Decide your prof:</td>
+            <td height="30"><input type="text" name="age" value="${user.admin}"/></td>
         </tr>
     </table>
     <table width="200">
         <tr>
             <td width="50" align="center" height="20">
-                <input type="hidden" name="id" value=${department.id}>
-                <input type="hidden" name="version" value=${department.version}>
+                <input type="hidden" name="id" value=${user.id}>
                 <input type="submit" value="Add">
             </td>
             <td width="50" height="20">
-                <form method="post" action="/dep">
+                <form method="post" action="/all">
                     <input type="submit" value="Cancel">
                 </form>
             </td>

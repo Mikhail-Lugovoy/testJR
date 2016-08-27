@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 public class User extends BaseModel {
 
     private String name;
+    private int age;
+    private boolean isAdmin;
 
     public String getName() {
         return name;
@@ -18,6 +20,22 @@ public class User extends BaseModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 
     public static Builder newBuilder(){
@@ -37,7 +55,17 @@ public class User extends BaseModel {
             return this;
         }
 
-        public User buid(){
+        public Builder setAge(int age){
+            User.this.setAge(age);
+            return this;
+        }
+
+        public Builder setAdmin(boolean isAdmin){
+            User.this.setAdmin(isAdmin);
+            return this;
+        }
+
+        public User build(){
             return User.this;
         }
 
