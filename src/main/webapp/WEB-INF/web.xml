@@ -21,7 +21,6 @@
         </listener-class>
     </listener>
 
-
     <!--<listener>-->
         <!--<listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>-->
     <!--</listener>-->
