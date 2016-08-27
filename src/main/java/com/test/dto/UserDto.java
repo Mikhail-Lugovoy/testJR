@@ -9,6 +9,7 @@ public class UserDto {
     private String name;
     private Integer age;
     private String isAdmin;
+    private String isUser;
     private String date;
 
     public Integer getId() {
@@ -49,5 +50,13 @@ public class UserDto {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getIsUser() {
+        return isUser;
+    }
+
+    public void setIsUser(String isUser) {
+        this.isUser = isUser;
     }
 }
