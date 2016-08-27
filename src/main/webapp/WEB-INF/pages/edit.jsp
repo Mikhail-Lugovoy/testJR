@@ -24,6 +24,7 @@
         </tr>
     </table>
     <table width="200">
+
         <tr>
             <td width="50" align="center" height="20">
                 <input type="hidden" name="id" value=${user.id}>
