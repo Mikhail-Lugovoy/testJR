@@ -51,6 +51,21 @@
             </form>
         </td>
     </tr>
+    <td colspan="5">
+        <form method="post" action="/findUser">
+            <input type="text" name="name">
+            <input type="submit" value="Search">
+        </form>
+    </td>
+    <c:forEach var="page" items="${pages}">
+        <td colspan="5">
+            <form method="get" action="/all">
+                <input type="submit" name="page" value="${page}">
+            </form>
+        </td>
+       </c:forEach>
+    <tr>
+    </tr>
 </table>
 </body>
 </html>

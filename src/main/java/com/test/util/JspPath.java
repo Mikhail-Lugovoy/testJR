@@ -6,4 +6,5 @@ package com.test.util;
 public class JspPath {
     public static final String USERS_ALL = "/all";
     public static final String USERS_EDIT = "/edit";
+    public static final String USERS_USER = "/user";
 }

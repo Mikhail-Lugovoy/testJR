@@ -14,6 +14,8 @@ public interface Service<T> {
 
     T getById(Integer id) throws SQLException;
 
+    T getByName(String name) throws SQLException;
+
     void delete(T o) throws SQLException;
 
     T insert(T o) throws SQLException;

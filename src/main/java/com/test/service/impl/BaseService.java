@@ -27,6 +27,8 @@ public abstract class BaseService <T , P extends JpaRepository<T,Integer>> imple
         return dao.findOne(id);
     }
 
+
+
     public void delete(T o) throws SQLException {
         dao.delete(o);
     }
