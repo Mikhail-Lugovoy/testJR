@@ -5,6 +5,7 @@ import com.test.model.User;
 import com.test.service.UserService;
 import com.test.util.JspPath;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.Lifecycle;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import java.security.Timestamp;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by milu on 27.08.16.
@@ -27,10 +30,6 @@ public class UserController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ModelAndView showAll() throws SQLException {
-//        Timestamp timestamp = userService.getAll().get(1).getDate();
-//        System.out.println(userService.getAll().get(1).getDate().getClass());
-//        String s = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(userService.getAll().get(1).getDate().getClass());
-//        System.out.println(s);
 
         return new ModelAndView(JspPath.USERS_ALL, "users", userService.getAll());
     }
@@ -38,9 +37,12 @@ public class UserController {
     @RequestMapping(value = "userSaveOrUpdate", method = RequestMethod.POST)
     public String addOne(@RequestParam(required = false)Integer id,
                          @ModelAttribute("dto")UserDto dto) throws SQLException {
+        List<User> list = userService.getAll();//
+        System.out.println(list.get(0).getCurrentDate().getClass());
 
+        Date date = new Date();
         boolean b = Boolean.parseBoolean(dto.getIsAdmin());
-        User user = User.newBuilder().setName(dto.getName()).setId(id).setAge(dto.getAge()).setAdmin(b).build();
+        User user = User.newBuilder().setName(dto.getName()).setId(id).setAge(dto.getAge()).setAdmin(b).setDate(date).build();
         if(id == null){
             userService.insert(user);
         }
@@ -98,6 +100,7 @@ public class UserController {
 //        }
 //        return modelAndView;
 //    }
+
 
 
 }

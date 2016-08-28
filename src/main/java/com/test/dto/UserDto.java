@@ -1,5 +1,7 @@
 package com.test.dto;
 
+import java.util.Date;
+
 /**
  * Created by milu on 27.08.16.
  */
@@ -10,7 +12,7 @@ public class UserDto {
     private Integer age;
     private String isAdmin;
     private String isUser;
-    private String date;
+    private Date date;
 
     public Integer getId() {
         return id;
@@ -44,11 +46,11 @@ public class UserDto {
         this.isAdmin = isAdmin;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

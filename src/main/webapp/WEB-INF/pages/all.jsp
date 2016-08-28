@@ -25,7 +25,7 @@
                 </c:otherwise>
             </c:choose>
             <td>
-                <%--<fmt:formatDate value="${user.createdDate}" pattern="yyyy-MM-dd HH:mm:ss" />--%>
+                <fmt:formatDate value="${user.currentDate}" pattern="yyyy-MM-dd HH:mm:ss" />
 
             </td>
 

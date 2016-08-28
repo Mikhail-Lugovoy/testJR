@@ -1,9 +1,7 @@
 package com.test.model;
 
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import java.security.Timestamp;
 import java.util.Date;
 
 /**
@@ -12,14 +10,25 @@ import java.util.Date;
 @Entity(name = "users")
 public class User extends BaseModel {
 
+    @Column(name = "NAME")
     private String name;
+
+    @Column(name = "AGE")
     private int age;
+
+    @Column(name = "IS_ADMIN")
     private boolean isAdmin;
-//    private Timestamp createdDate;
-//
-//    public Timestamp getDate() {
-//        return createdDate;
-//    }
+
+    @Column(name = "CREATED_DATE")
+    private Date currentDate;
+
+    public Date getCurrentDate() {
+        return currentDate;
+    }
+
+    public void setCurrentDate(Date currentDate) {
+        this.currentDate = currentDate;
+    }
 
     public String getName() {
         return name;
@@ -69,6 +78,11 @@ public class User extends BaseModel {
 
         public Builder setAdmin(boolean isAdmin){
             User.this.setAdmin(isAdmin);
+            return this;
+        }
+
+        public Builder setDate(Date date){
+            User.this.setCurrentDate(date);
             return this;
         }
 

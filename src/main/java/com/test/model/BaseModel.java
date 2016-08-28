@@ -1,9 +1,6 @@
 package com.test.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 /**
  * Created by milu on 27.08.16.
@@ -13,6 +10,7 @@ public class BaseModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     protected Integer id;
 
     public Integer getId() {
