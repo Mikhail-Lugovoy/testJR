@@ -27,33 +27,45 @@ public class UserController {
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ModelAndView showAll(@RequestParam(required = false)Integer page) throws SQLException {
 
-        ModelAndView modelAndView = new ModelAndView(JspPath.USERS_ALL);
+        ModelAndView modelAndView;
 
-        int size;
-        int usersInPage = 5;
-        List<User> users;
-        List<Integer> pages = new ArrayList<>();
+        int size;                                                                                       // количество страниц
+        int usersInPage = 5;                                                                            // количество юзеров на одной странице
+        List<User> users;                                                                               // список юзеров для одной страницы
+        List<Integer> pages = new ArrayList<>();                                                        // список количества страниц для пэйджинга
 
-        if (page == null || page == 1) {
-            users = userService.getAll().subList(0, usersInPage);
+        if (userService.getAll().size() == 0){
+            modelAndView = new ModelAndView(JspPath.USERS_EMPTY);
         } else {
-            int userInNextPage = (page-1)*usersInPage;
+            modelAndView = new ModelAndView(JspPath.USERS_ALL);
 
-            if (userInNextPage + usersInPage <= userService.getAll().size()) {
-                users = userService.getAll().subList(userInNextPage, userInNextPage + usersInPage);
+            if (page == null || page == 1) {
+                if(usersInPage > userService.getAll().size()){
+                    users = userService.getAll().subList(0, userService.getAll().size());
+
+                } else {
+                    users = userService.getAll().subList(0, usersInPage);
+                }
+
             } else {
-                users = userService.getAll().subList(userInNextPage, userService.getAll().size());
-            }
-        }
-        if (userService.getAll().size()!= 0) {
-            size = userService.getAll().size() / usersInPage + 1;
-            for (int i = 1; i <= size; i++) {
-                pages.add(i);
-            }
-        }
+                int userInNextPage = (page - 1) * usersInPage;                                          // индекс, до какого будет отсчитываться очередное ко-во юзеров
 
-        modelAndView.addObject("users", users);
-        modelAndView.addObject("pages", pages);
+                if (userInNextPage + usersInPage <= userService.getAll().size()) {
+                    users = userService.getAll().subList(userInNextPage, userInNextPage + usersInPage);
+                } else {
+                    users = userService.getAll().subList(userInNextPage, userService.getAll().size());
+                }
+            }
+            if (userService.getAll().size() != 0) {
+                size = userService.getAll().size() / usersInPage + 1;
+                for (int i = 1; i <= size; i++) {
+                    pages.add(i);
+                }
+            }
+
+            modelAndView.addObject("users", users);
+            modelAndView.addObject("pages", pages);
+        }
 
         return modelAndView;
     }
@@ -61,9 +73,6 @@ public class UserController {
     @RequestMapping(value = "userSaveOrUpdate", method = RequestMethod.POST)
     public String addOne(@RequestParam(required = false)Integer id,
                          @ModelAttribute("dto")UserDto dto) throws SQLException {
-        List<User> list = userService.getAll();//
-        System.out.println(list.get(0).getCurrentDate().getClass());
-
         boolean b = Boolean.parseBoolean(dto.getIsAdmin());
         User user = User.newBuilder().setName(dto.getName()).setId(id).setAge(dto.getAge()).setAdmin(b).build();
         if(id == null){
@@ -108,9 +117,5 @@ public class UserController {
         return modelAndView;
 
     }
-
-
-
-
 }
 
