@@ -1,5 +1,6 @@
 package com.test.service;
 
+import com.test.model.User;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
@@ -14,7 +15,7 @@ public interface Service<T> {
 
     T getById(Integer id) throws SQLException;
 
-    T getByName(String name) throws SQLException;
+    List<User> getByName(String name) throws SQLException;
 
     void delete(T o) throws SQLException;
 

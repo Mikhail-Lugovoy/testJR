@@ -56,12 +56,16 @@ public class UserController {
                     users = userService.getAll().subList(userInNextPage, userService.getAll().size());
                 }
             }
-            if (userService.getAll().size() != 0) {
+            if (userService.getAll().size()%usersInPage != 0 || userService.getAll().size() < usersInPage) {
                 size = userService.getAll().size() / usersInPage + 1;
+            } else {
+                size = userService.getAll().size() / usersInPage;
+
+            }
                 for (int i = 1; i <= size; i++) {
                     pages.add(i);
                 }
-            }
+
 
             modelAndView.addObject("users", users);
             modelAndView.addObject("pages", pages);
@@ -111,8 +115,8 @@ public class UserController {
     public ModelAndView findByOne (@RequestParam (required = true) String name) throws SQLException {
 
         ModelAndView modelAndView = new ModelAndView(JspPath.USERS_USER);
-        User user = userService.getByName(name);
-        modelAndView.addObject("user", user);
+        List<User> users = userService.getByName(name);
+        modelAndView.addObject("users", users);
         modelAndView.addObject("name", name);
         return modelAndView;
 
