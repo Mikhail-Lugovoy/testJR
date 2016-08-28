@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Timestamp;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by milu on 27.08.16.
@@ -25,9 +27,10 @@ public class UserController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ModelAndView showAll() throws SQLException {
-//        for (int i = 0; i< userService.getAll().size(); i++){
-//            System.out.println(userService.getById(i+1).isAdmin());
-//        }
+//        Timestamp timestamp = userService.getAll().get(1).getDate();
+//        System.out.println(userService.getAll().get(1).getDate().getClass());
+//        String s = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(userService.getAll().get(1).getDate().getClass());
+//        System.out.println(s);
 
         return new ModelAndView(JspPath.USERS_ALL, "users", userService.getAll());
     }
@@ -35,10 +38,8 @@ public class UserController {
     @RequestMapping(value = "userSaveOrUpdate", method = RequestMethod.POST)
     public String addOne(@RequestParam(required = false)Integer id,
                          @ModelAttribute("dto")UserDto dto) throws SQLException {
-        System.out.println(id + " " + dto.getIsAdmin() + " " + dto.getIsUser()+ " " + dto.getName() + " "+ dto.getAge());
+
         boolean b = Boolean.parseBoolean(dto.getIsAdmin());
-        boolean c = Boolean.parseBoolean("1");
-        System.out.println(b + " " + c);
         User user = User.newBuilder().setName(dto.getName()).setId(id).setAge(dto.getAge()).setAdmin(b).build();
         if(id == null){
             userService.insert(user);
@@ -75,12 +76,28 @@ public class UserController {
     @RequestMapping(value = "userEdit", method = RequestMethod.POST)
     public ModelAndView updateOne (@RequestParam(required = false)Integer id) throws SQLException {
         ModelAndView modelAndView = new ModelAndView(JspPath.USERS_EDIT);
+
         if (id != null){
             User user = userService.getById(id);
-            modelAndView.addObject("user", user);
+            UserDto dto = new UserDto();
+            dto.setId(user.getId());
+            dto.setName(user.getName());
+            dto.setAge(user.getAge());
+            dto.setIsAdmin(String.valueOf(user.isAdmin()));
+            System.out.println(dto.getIsAdmin());
+            modelAndView.addObject("dto", dto);
         }
         return modelAndView;
     }
+//    @RequestMapping(value = "userEdit", method = RequestMethod.POST)
+//    public ModelAndView updateOne (@RequestParam(required = false)Integer id) throws SQLException {
+//        ModelAndView modelAndView = new ModelAndView(JspPath.USERS_EDIT);
+//        if (id != null){
+//            User user = userService.getById(id);
+//            modelAndView.addObject("user", user);
+//        }
+//        return modelAndView;
+//    }
 
 
 }

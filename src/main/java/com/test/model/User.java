@@ -3,6 +3,8 @@ package com.test.model;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.persistence.Entity;
+import java.security.Timestamp;
+import java.util.Date;
 
 /**
  * Created by milu on 27.08.16.
@@ -13,6 +15,11 @@ public class User extends BaseModel {
     private String name;
     private int age;
     private boolean isAdmin;
+//    private Timestamp createdDate;
+//
+//    public Timestamp getDate() {
+//        return createdDate;
+//    }
 
     public String getName() {
         return name;

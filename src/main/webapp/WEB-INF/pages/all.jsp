@@ -1,4 +1,4 @@
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <head>
@@ -9,7 +9,8 @@
     <tr>
         <td><b>Name</b></td>
         <td><b>Age</b></td>
-        <td><b>User/Admin</b></td>
+        <td><b>Status</b></td>
+        <td><b>Date</b></td>
     </tr>
     <c:forEach var="user" items="${users}">
         <tr>
@@ -23,6 +24,10 @@
                     <td>User</td>
                 </c:otherwise>
             </c:choose>
+            <td>
+                <%--<fmt:formatDate value="${user.createdDate}" pattern="yyyy-MM-dd HH:mm:ss" />--%>
+
+            </td>
 
             <td>
                 <form method="post" action="/userDelete">
