@@ -2,6 +2,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<head>
     <meta charset="utf-8">
 
     <title>Title</title>
@@ -9,7 +10,7 @@
     <link href="<c:url value="/assets/css/bootstrap.css" />" rel="stylesheet">
     <link href="<c:url value="/assets/css/style.css" />" rel="stylesheet">
 
-
+</head>
 <body>
 <div class="row">
     <div class="col-md-4"></div>

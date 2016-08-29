@@ -78,9 +78,7 @@
                 <c:forEach var="page" items="${pages}">
                     <button class="btn btn-primary" name="page" value="${page}">${page}</button>
                 </c:forEach>
-                    </form>
-
-
+                </form>
             </div>
         </div>
 

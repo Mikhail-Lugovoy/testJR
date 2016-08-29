@@ -39,7 +39,7 @@
 
 }
 .ret {
-    text-align: right;
+    text-align: center;
 
 }
 .all {
@@ -62,3 +62,7 @@ h3 {
 .empty {
     margin-top: 400px;
 }
+.emp {
+    text-align: center;
+}
+

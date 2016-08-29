@@ -24,6 +24,8 @@ public class UserController {
     @Autowired
     UserService userService;
 
+
+
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ModelAndView showAll(@RequestParam(required = false)Integer page) throws SQLException {
 

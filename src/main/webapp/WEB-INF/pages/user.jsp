@@ -51,7 +51,7 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4 empty">
-            <h2>Sorry, <mark>${name}</mark> is not on database!</h2>
+            <h2>Sorry, <mark>${name}</mark> is not on the database!</h2>
         </div>
         <div class="col-md-4"></div>
     </div>
