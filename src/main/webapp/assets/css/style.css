@@ -1,0 +1,16 @@
+.home {
+    background-image: url('/assets/img/javarush.jpg');
+    background-size: cover;
+    height: 329px;
+    width: 604px;
+    margin-top: 200px;
+
+
+}
+.h-btn{
+    /*text-align: center;*/
+}
+.btn-home{
+    margin-left: 10px;
+    width: 586px;
+}
