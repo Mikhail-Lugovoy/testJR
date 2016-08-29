@@ -40,7 +40,6 @@
         </div>
         <div class="col-md-2">
             <div class="row">
-
             <c:choose>
                 <c:when test="${dto.isAdmin.equals('true')}">
                     <div class="col-md-6">
@@ -86,12 +85,9 @@
             <input type="hidden" name="id" value=${dto.id}>
             <c:if test="${dto.id == null}">
                 <button class="btn btn-success add">Add</button>
-                <%--<input type="submit" value="Add">--%>
             </c:if>
             <c:if test="${dto.id != null}">
                 <button class="btn btn-warning add" >Edit</button>
-
-                <%--<input type="submit" value="Edit">--%>
             </c:if>
         </div>
         </form:form>
@@ -99,61 +95,9 @@
         <div class="col-md-2">
             <form method="get" action="/all">
                 <button class="btn btn-primary add">Cancel</button>
-
-            <%--<input type="submit" value="Cancel">--%>
             </form>
         </div>
         <div class="col-md-4"></div>
     </div>
-
-
-
-    <%--<table>--%>
-        <%--<tr>--%>
-            <%--<td height="50" width="200">New User Name:</td>--%>
-            <%--<td height="30"><input type="text" name="name" value="${dto.name}" required/></td>--%>
-        <%--</tr>--%>
-        <%--<tr>--%>
-            <%--<td height="50" width="200">New User Age:</td>--%>
-            <%--<td height="30"><input type="text" name="age" value="${dto.age}" pattern="[0-9]{1,3}" required/></td>--%>
-        <%--</tr>--%>
-        <%--<tr>--%>
-            <%--<td height="50" width="200">Decide your status:</td>--%>
-            <%--<c:choose>--%>
-                <%--<c:when test="${dto.isAdmin.equals('true')}">--%>
-                    <%--<td>--%>
-                    <%--<input type="radio" name="isAdmin" value="true" required checked>Admin<Br>--%>
-                    <%--<input type="radio" name="isAdmin" value="false" required>User<Br>--%>
-                    <%--</td>--%>
-                <%--</c:when>--%>
-                <%--<c:otherwise>--%>
-                    <%--<td>--%>
-                        <%--<input type="radio" name="isAdmin" value="true" required >Admin<Br>--%>
-                        <%--<input type="radio" name="isAdmin" value="false" required checked>User<Br>--%>
-                    <%--</td>--%>
-                <%--</c:otherwise>--%>
-            <%--</c:choose>--%>
-
-        <%--</tr>--%>
-    <%--</table>--%>
-    <%--<table width="200">--%>
-
-        <%--<tr>--%>
-            <%--<td width="50" align="center" height="20">--%>
-                <%--<input type="hidden" name="id" value=${dto.id}>--%>
-                <%--<c:if test="${dto.id == null}">--%>
-                    <%--<input type="submit" value="Add">--%>
-                <%--</c:if>--%>
-                <%--<c:if test="${dto.id != null}">--%>
-                    <%--<input type="submit" value="Edit">--%>
-                <%--</c:if>--%>
-            <%--</td>--%>
-        <%--</tr>--%>
-    <%--</table>--%>
-<%--<td width="50" height="20">--%>
-    <%--<form method="get" action="/all">--%>
-        <%--<input type="submit" value="Cancel">--%>
-    <%--</form>--%>
-<%--</td>--%>
 </body>
 </html>
