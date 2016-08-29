@@ -38,12 +38,16 @@
     background-image: url("/assets/img/edit.jpg");
 }
 h2{
-    /*color: white;*/
     font-weight: bold;
+
 
 }
 h3 {
-    /*color: white;*/
     font-weight: bold;
+}
+.text {
+    padding: 0px;
+    margin-top: 15px;
+    width: 262px;
 
 }
